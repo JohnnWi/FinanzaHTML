@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Liquidità</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Gestione Patrimonio</h1>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:underline">Dashboard</a></li>
+                <li><a href="liquidity.html" class="hover:underline">Liquidità</a></li>
+                <li><a href="crypto.html" class="hover:underline">Crypto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-6">Gestione Liquidità</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Liquidità Totale</h3>
+                <p id="total-liquidity" class="text-3xl font-bold text-blue-600">€0.00</p>
+            </div>
+            
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-4">Aggiungi Transazione</h3>
+            <form id="liquidity-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="amount" class="block mb-1">Importo</label>
+                    <input type="number" id="amount" class="w-full p-2 border rounded" step="0.01" required>
+                </div>
+                <div>
+                    <label for="description" class="block mb-1">Descrizione</label>
+                    <input type="text" id="description" class="w-full p-2 border rounded" required>
+                </div>
+                <div>
+                    <label for="date" class="block mb-1">Data</label>
+                    <input type="date" id="date" class="w-full p-2 border rounded" required>
+                </div>
+                <div>
+                    <label for="type" class="block mb-1">Tipo</label>
+                    <select id="type" class="w-full p-2 border rounded" required>
+                        <option value="income">Entrata</option>
+                        <option value="expense">Uscita</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Aggiungi Transazione</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Storico Transazioni</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="px-4 py-2">Data</th>
+                            <th class="px-4 py-2">Tipo</th>
+                            <th class="px-4 py-2">Importo</th>
+                            <th class="px-4 py-2">Descrizione</th>
+                            <th class="px-4 py-2">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="liquidity-transactions"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="liquidity.js"></script>
+</body>
+</html>

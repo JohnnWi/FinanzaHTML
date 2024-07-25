@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Crypto</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Gestione Patrimonio</h1>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:underline">Dashboard</a></li>
+                <li><a href="liquidity.html" class="hover:underline">Liquidità</a></li>
+                <li><a href="crypto.html" class="hover:underline">Crypto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-6">Gestione Crypto</h2>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-4">Valore Totale Crypto</h3>
+            <p id="total-crypto-value" class="text-3xl font-bold text-green-600">€0.00</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-4">Andamento Valore Crypto</h3>
+            <canvas id="crypto-trend-chart"></canvas>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-4">Aggiungi/Modifica Crypto</h3>
+            <form id="crypto-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="hidden" id="crypto-index" value="">
+                <div>
+                    <label for="crypto-name" class="block mb-1">Nome Crypto</label>
+                    <input type="text" id="crypto-name" class="w-full p-2 border rounded" required>
+                </div>
+                <div>
+                    <label for="crypto-amount" class="block mb-1">Quantità</label>
+                    <input type="number" id="crypto-amount" class="w-full p-2 border rounded" step="0.000001" required>
+                </div>
+                <div>
+                    <label for="crypto-buy-price" class="block mb-1">Prezzo di Acquisto</label>
+                    <input type="number" id="crypto-buy-price" class="w-full p-2 border rounded" step="0.01" required>
+                </div>
+                <div>
+                    <label for="crypto-current-price" class="block mb-1">Prezzo Attuale</label>
+                    <input type="number" id="crypto-current-price" class="w-full p-2 border rounded" step="0.01" required>
+                </div>
+                <div>
+                    <label for="crypto-purchase-date" class="block mb-1">Data di Acquisto</label>
+                    <input type="date" id="crypto-purchase-date" class="w-full p-2 border rounded" required>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Salva Crypto</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Portfolio Crypto</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="px-4 py-2">Nome</th>
+                            <th class="px-4 py-2">Quantità</th>
+                            <th class="px-4 py-2">Prezzo di Acquisto</th>
+                            <th class="px-4 py-2">Prezzo Attuale</th>
+                            <th class="px-4 py-2">Valore Totale</th>
+                            <th class="px-4 py-2">Profitto/Perdita</th>
+                            <th class="px-4 py-2">Data di Acquisto</th>
+                            <th class="px-4 py-2">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crypto-portfolio"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="crypto.js"></script>
+</body>
+</html>
